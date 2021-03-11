@@ -15,3 +15,5 @@ CREATE TABLE wedding.guests (
 	contact_number varchar NULL,
 	CONSTRAINT guests_pk PRIMARY KEY (url_param_id)
 );
+
+--default nextval('wedding.guests_id_seq'::regclass)
