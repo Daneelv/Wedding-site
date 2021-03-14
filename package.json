@@ -8,6 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "next",
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@emotion/server": "latest",
     "next": "10.0.6",
     "pg-promise": "^10.9.4",
     "react": "17.0.1",
