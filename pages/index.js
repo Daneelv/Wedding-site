@@ -1,24 +1,24 @@
-import Button from '@material-ui/core/Button';
-import Link from '../src/Link';
 import Head from 'next/head'
 import styles from '../styles/Layout.module.css'
-
+import Layout from '../compnents/Layout';
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>Daneel & Maryke Trou</title>
         <link rel="icon" href="/heart.png" />
       </Head>
-
+    <div className={styles.container}>
       <main className={styles.main}>
-        <Button variant="contained" component={Link} noLinkStyle href="/">
-          Go to the main page
-        </Button>
+        <h3>Hallo </h3>
+
       </main>
+
 
       <footer className={styles.footer}>
       </footer>
-    </div>
+
+      </div>
+      </Layout>
   )
 }

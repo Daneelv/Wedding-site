@@ -8,14 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "@material-ui/core": "next",
-    "@emotion/cache": "latest",
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
-    "@emotion/server": "latest",
+    "materialize-css": "^1.0.0-rc.2",
     "next": "10.0.6",
     "pg-promise": "^10.9.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
-  }
+    "react-dom": "17.0.1",
+    "react-materialize": "^3.9.7"
+  },
+  "devDependencies": {}
 }
