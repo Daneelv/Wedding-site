@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Layout.module.css'
 import Layout from '../compnents/Layout';
+import Banner from '../compnents/Banner';
+import AboutUs from '../compnents/Aboutus';
 export default function Home() {
   return (
     <Layout>
@@ -8,17 +10,19 @@ export default function Home() {
         <title>Daneel & Maryke Trou</title>
         <link rel="icon" href="/heart.png" />
       </Head>
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h3>Hallo </h3>
+    {/* <div className={styles.container}> */}
+      {/* <main className={styles.main}> */}
+      <Banner/>
+      <AboutUs/>
 
-      </main>
+
+      {/* </main> */}
 
 
       <footer className={styles.footer}>
       </footer>
 
-      </div>
+      {/* </div> */}
       </Layout>
   )
 }

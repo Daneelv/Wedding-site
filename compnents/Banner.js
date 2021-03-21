@@ -45,13 +45,15 @@ const Banner = () => {
 
     return (
         <>
-            <div className="slider">
-                <ul className="slides">
-                     {banners.map((banner) =>
-                        <BannerItems ban = {banner} />
-                        )}; 
-                </ul>
-            </div>
+            <section id = 'banner'>
+                <div className="slider">
+                    <ul className="slides">
+                        {banners.map((banner) =>
+                            <BannerItems ban = {banner} />
+                            )}; 
+                    </ul>
+                </div>
+            </section>
         </>
     )
 }
