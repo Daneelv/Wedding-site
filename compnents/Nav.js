@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import navStyles from '../styles/Nav.module.css';
 import 'materialize-css/dist/css/materialize.min.css';
 
@@ -19,13 +19,13 @@ const Nav = () => {
 
     return (
         <>
-    <div class="navbar-fixed">
+    <div className="navbar-fixed">
             <nav className = {navStyles.navbar}>
-            <div class="nav-wrapper">
-            <a href="#" data-target="mobile-nav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-            <a href="#" class="logo">Logo</a>
+            <div className="nav-wrapper">
+            <a href="#" data-target="mobile-nav" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
+            <a href="#" className="logo">Logo</a>
             
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li><a href="#banner">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li className= {navStyles.btnRsvp}><a href="rsvp">RSVP</a></li>
@@ -33,10 +33,10 @@ const Nav = () => {
             </div>
             </nav>
       </div>
-        <ul class="sidenav" id="mobile-nav">
+        <ul className="sidenav" id="mobile-nav">
         <li><a href="#banner">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="rsvp" class="">RSVP</a></li>
+        <li><a href="rsvp" className="">RSVP</a></li>
         </ul>
         </>
     )
