@@ -22,7 +22,7 @@ const AboutUs = () => {
   }
     return (
         <section id= 'about'>
-            <h3 style = {style.heading}>Our Story</h3>
+        <h3 style = {style.heading}>Our Story</h3>
 
     <div className="row">
     <div className="col s12 m4 offset-m2">
