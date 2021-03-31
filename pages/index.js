@@ -1,29 +1,47 @@
-
-import styles from '../styles/Layout.module.css'
-import Layout from '../compnents/Layout';
-import Banner from '../compnents/Banner';
-import AboutUs from '../compnents/Aboutus';
-import InvitedPerson from '../compnents/InvitedPerson';
-import Gallery from '../compnents/gallery';
-export default function Home() {
+import styles from "../styles/Layout.module.css";
+import Layout from "../compnents/Layout";
+import Banner from "../compnents/Banner";
+import AboutUs from "../compnents/Aboutus";
+import InvitedPerson from "../compnents/InvitedPerson";
+import Gallery from "../compnents/gallery";
+import Venue from "../compnents/Venue";
+import Parralax from "../compnents/Parralax";
+export default function Home(data) {
   return (
     <Layout>
-
-    {/* <div className={styles.container}> */}
+      {/* <div className={styles.container}> */}
       {/* <main className={styles.main}> */}
-      <Banner/>
-      <AboutUs/>
-      <Gallery/>
-      <InvitedPerson/>
-
+      <Banner />
+      <AboutUs />
+      <Gallery />
+      <Parralax
+        paragraph="Hallo"
+        heading="JAJAJA"
+        image1="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg"
+        image2="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg"
+      />
+      <InvitedPerson />
+      <Venue />
+      <Parralax
+        paragraph="Hallo"
+        heading="JAJAJA"
+        image1="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg"
+        image2=""
+      />
 
       {/* </main> */}
 
-
-      <footer className={styles.footer}>
-      </footer>
+      <footer className={styles.footer}></footer>
 
       {/* </div> */}
-      </Layout>
-  )
+    </Layout>
+  );
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch(`http://localhost:3000/api/get_site_data`);
+  const data = await res.json();
+  return {
+    props: { data },
+  };
 }

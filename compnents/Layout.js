@@ -1,30 +1,32 @@
-import Nav from './Nav';
-import styles from '../styles/Layout.module.css'
-import Head from 'next/head'
+import Nav from "./Nav";
+import styles from "../styles/Layout.module.css";
+import Head from "next/head";
 
 const Layout = ({ children }) => {
-    return (
-        <>
-        {/*Add Global Style for smooth scrolling */}
-        <style global jsx>
-        {` html { scroll-behavior: smooth; }`}
-        </style>
+  return (
+    <>
+      {/*Add Global Style for smooth scrolling */}
+      <style global jsx>
+        {`
+          html {
+            scroll-behavior: smooth;
+          }
+        `}
+      </style>
 
-        <Head>
-        <title>Daneel & Maryke Trou</title>
+      <Head>
+        <title>Daneel & Maryke Troue</title>
         <link rel="icon" href="/heart.png" />
-        <link rel="stylesheet" type="text/css" href="../styles/globals.css"></link>
       </Head>
 
-        <Nav />
-        {/* <div className={styles.all}> */}
-            {/* <main className={styles.main}> */}
-                {children}
-            {/* </main> */}
-        {/* </div> */}
-    
-        </>
-    )
-}
+      <Nav />
+      {/* <div className={styles.all}> */}
+      {/* <main className={styles.main}> */}
+      {children}
+      {/* </main> */}
+      {/* </div> */}
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

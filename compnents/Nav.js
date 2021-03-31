@@ -34,11 +34,11 @@ const Nav = () => {
                     </nav>
             </div>
             <ul className="sidenav" id="mobile-nav">
-    `           <li><a href="#banner">Tuis</a></li>
+               <li><a href="#banner">Tuis</a></li>
                 <li><a href="#about">Bietjie van Ons</a></li>
                 <li><a href="#gallery">Fotos</a></li>
                 <li><a href="#invitedPers">Jy!</a></li>
-                <li><a href="#rsvp" className="">RSVP</a></li>`
+                <li><a href="#rsvp" className="">RSVP</a></li>
             </ul>
         </>
     )
