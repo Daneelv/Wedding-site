@@ -1,60 +1,63 @@
-import React from 'react'
+import React from "react";
+import { useMediaQuery } from "react-responsive";
 
-
-const AboutUs = () => {
-  const style =  {
-    circleImage : {
-      height: '300px',
-      width: '300px',
-      borderRadius:'50%'
+const AboutUs = (sectAbout) => {
+  const { image, paragraph } = sectAbout.sectAbout;
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
+  const style = {
+    Img: {
+      height: "600px",
+      width: "auto",
+      maxWidth: "100%",
+      maxHeight: "auto",
     },
-    cardImg : {
-      display:'flex', 
-      flexDirection: 'row', 
-      justifyContent: 'center', 
-      borderRadius: '50%', 
-      overflow:'hidden'
+    butn: {
+      width: "50%",
     },
-    heading: {
-      padding: '20px',
-      textAlign: 'center',
-    }
-  }
-    return (
-        <section id= 'about'>
-        <h3 style = {style.heading}>Our Story</h3>
+    centreAlign: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "450px",
+    },
+    sect: {
+      padding: "40px 0 40px 0",
+    },
+  };
 
-    <div className="row">
-    <div className="col s12 m4 offset-m2">
-      <div className="card z-depth-0">
-      <div className = "card-image" style = {style.cardImg}>
-          <img  style = {style.circleImage}   src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg"></img> 
-        </div>
-        <div className="card-content">
-          <h4 style = {style.heading}>Daneel</h4>
-          <p>Aliqua enim labore enim adipisicing exercitation commodo deserunt labore veniam ad laboris in officia officia. Occaecat qui ullamco magna quis esse nisi officia dolor. Eiusmod officia elit quis ullamco ex nulla ut voluptate laborum et cillum.</p>
+  return (
+    <section id="about">
+      <style jsx>{`
+          @media screen and (max-width: 600px) {
+            #about{
+              display: flex, 
+              flex-direction: column-reverse
+              background : green;
+            }
+          }
+  `}</style>
+
+      <h3 className="center-align">Ons Storie</h3>
+      <div className="container center-align" style={style.sect}>
+        <div className="row">
+          <div className="col m6 s12 l6">
+            <div className="row">
+              <div className="col m12 s12 l12" style={style.centreAlign}>
+                <div className="row">
+                  <div className="col m12 s12 l12 ">
+                    <p className="left-align">{paragraph}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col s12 m6 l6">
+            <img style={style.Img} className="" src={image}></img>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+  );
+};
 
-    <div className="col s12 m4">
-      <div className="card z-depth-0">
-      <div className = "card-image" style = {style.cardImg}>
-          <img style = {style.circleImage}  src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg"></img> 
-        </div>
-        <div className="card-content">
-        <h4 style = {style.heading}>Maryke</h4>
-          <p>Est id incididunt reprehenderit enim sunt mollit ipsum voluptate elit amet. Minim laboris nisi tempor incididunt amet ipsum. Minim consequat consequat mollit et labore pariatur. Veniam amet deserunt duis ipsum et eiusmod laborum ex occaecat tempor.
-            
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>    
-        </section>
-    ) 
-
-
-}
-
-export default AboutUs
+export default AboutUs;

@@ -6,13 +6,12 @@ import InvitedPerson from "../compnents/InvitedPerson";
 import Gallery from "../compnents/gallery";
 import Venue from "../compnents/Venue";
 import Parralax from "../compnents/Parralax";
-export default function Home(data) {
+export default function Home(siteData) {
+  const { sectBanner, sectAbout } = siteData.siteData.content_attr;
   return (
     <Layout>
-      {/* <div className={styles.container}> */}
-      {/* <main className={styles.main}> */}
-      <Banner />
-      <AboutUs />
+      <Banner bannerData={sectBanner} />
+      <AboutUs sectAbout={sectAbout} />
       <Gallery />
       <Parralax
         paragraph="Hallo"
@@ -40,8 +39,8 @@ export default function Home(data) {
 
 export async function getStaticProps(context) {
   const res = await fetch(`http://localhost:3000/api/get_site_data`);
-  const data = await res.json();
+  const siteData = await res.json();
   return {
-    props: { data },
+    props: { siteData },
   };
 }

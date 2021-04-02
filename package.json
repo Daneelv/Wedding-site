@@ -8,13 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "install": "^0.13.0",
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0-rc.2",
     "next": "10.0.6",
     "pg-promise": "^10.9.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-materialize": "^3.9.7"
+    "react-materialize": "^3.9.7",
+    "react-responsive": "^8.2.0"
   },
   "devDependencies": {}
 }
