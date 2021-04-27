@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import Loader from "react-loader-spinner";
 import styles from "../styles/Layout.module.css";
 
+// Components
 import Layout from "../compnents/Layout";
 import Banner from "../compnents/Banner";
 import AboutUs from "../compnents/Aboutus";
@@ -11,9 +14,11 @@ import Venue from "../compnents/Venue";
 import Parralax from "../compnents/Parralax";
 import Rsvp from "../compnents/Rsvp";
 import ModalInfoLoad from "../compnents/modalInfoLoad";
-let Load = true;
+
 export default function Home(siteData) {
-  const [loading, setLoading] = useState(Load);
+  const [loading, setLoading] = useState(true);
+  const [userData, setUserData] = useState({});
+  const Router = useRouter();
   const {
     sectBanner,
     sectAbout,
@@ -22,10 +27,29 @@ export default function Home(siteData) {
   } = siteData.siteData.content_attr;
 
   useEffect(() => {
-    setTimeout(() => {
+    if (Router.isReady) {
+      getServerSideProps();
+    }
+  }, [Router.isReady]);
+
+  async function getServerSideProps() {
+    const qry = Router.query;
+
+    if (Object.keys(qry).length == 0) {
+      return Router.push("/page404");
+    }
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/get_user?UID=${qry.UID}`
+      );
+      const userData = await res.json();
+      setUserData(userData);
       setLoading(false);
-    }, 3000);
-  }, []);
+      return;
+    } catch {
+      return Router.push("/page404");
+    }
+  }
 
   return (
     <>
@@ -37,7 +61,7 @@ export default function Home(siteData) {
           }}
         >
           <Layout>
-          <ModalInfoLoad/>
+            <ModalInfoLoad />
             <Banner bannerData={sectBanner} />
             <AboutUs sectAbout={sectAbout} />
             <Gallery galleryData={sectGallery} />
@@ -45,8 +69,7 @@ export default function Home(siteData) {
             <InvitedPerson />
             <Venue />
             <Parralax parralax={sectParralax1} />
-            <Rsvp />
-
+            <Rsvp userData={userData} />
 
             {/* </main> */}
 
@@ -64,9 +87,9 @@ export default function Home(siteData) {
             justifyContent: "center",
           }}
         >
-          <div classname="row">
+          <div className="row">
             <div className="col m12 s12 l12 ">
-              <h1 class="left-align">Daneel</h1>
+              <h1 className="left-align">Daneel</h1>
             </div>
             <div className="col m12 s12 l12 ">
               <Loader
@@ -74,12 +97,11 @@ export default function Home(siteData) {
                 color="red"
                 height={400}
                 width={400}
-                timeout={3000} //3 secs
                 svgClass="my-custom-class"
               />
             </div>
             <div className="col m12 s12 l12 ">
-              <h1 class="right-align">Maryke</h1>
+              <h1 className="right-align">Maryke</h1>
             </div>
           </div>
         </div>
