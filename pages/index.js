@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { API_URL } from "../config/index";
 
 import Loader from "react-loader-spinner";
 import styles from "../styles/Layout.module.css";
@@ -15,33 +16,27 @@ import Parralax from "../compnents/Parralax";
 import Rsvp from "../compnents/Rsvp";
 import ModalInfoLoad from "../compnents/modalInfoLoad";
 
-export default function Home(siteData) {
+export default function Home({ siteData }) {
   const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   const Router = useRouter();
-  const {
-    sectBanner,
-    sectAbout,
-    sectGallery,
-    sectParralax1,
-  } = siteData.siteData.content_attr;
+  const { sectBanner, sectAbout, sectGallery, sectParralax1 } =
+    siteData.content_attr;
 
   useEffect(() => {
     if (Router.isReady) {
-      getServerSideProps();
+      getUserInfo();
     }
   }, [Router.isReady]);
 
-  async function getServerSideProps() {
+  async function getUserInfo() {
     const qry = Router.query;
 
     if (Object.keys(qry).length == 0) {
       return Router.push("/page404");
     }
     try {
-      const res = await fetch(
-        `http://localhost:3000/api/get_user?UID=${qry.UID}`
-      );
+      const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`);
       const userData = await res.json();
       setUserData(userData);
       setLoading(false);
@@ -69,13 +64,15 @@ export default function Home(siteData) {
             <InvitedPerson />
             <Venue />
             <Parralax parralax={sectParralax1} />
-            <Rsvp userData={userData} />
-
-            {/* </main> */}
+            <Rsvp
+              attending={userData.attending}
+              guest_comment={userData.guest_comment}
+              name={userData.name}
+              rsvp_date={userData.rsvp_date}
+              url_param_id={userData.url_param_id}
+            />
 
             <footer className={styles.footer}></footer>
-
-            {/* </div> */}
           </Layout>
         </div>
       ) : (

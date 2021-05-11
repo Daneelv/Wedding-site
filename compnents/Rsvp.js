@@ -7,25 +7,21 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const rsvp = (props) => {
-  const {
-    attending,
-    guest_comment,
-    name,
-    rsvp_date,
-    url_param_id,
-  } = props.userData;
-
+const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
   const rsvpRef = useRef();
   const [RSVPValue, setRSVPValue] = useState(
-    rsvp_date == null ? "" : attending
+    rsvp_date == null ? "" : attending.toString()
   );
   const [Comment, setComment] = useState(guest_comment);
-  const [showModal, setshowModal] = useState(false);
+  const [showModal, setshowModal] = useState(RSVPValue != "");
 
   useEffect(() => {
     var elems = document.querySelectorAll("select");
     M.FormSelect.init(elems, {});
+
+    var txtArea = document.querySelector("#comments");
+    M.textareaAutoResize(txtArea);
+    M.updateTextFields();
   }, []);
 
   function handleSubmit(e) {
@@ -41,13 +37,13 @@ const rsvp = (props) => {
 
   function handleChange(e) {
     const val = e.target.value;
-    // console.log(e.target.value);
     setRSVPValue(val);
     setshowModal(val != "");
   }
 
   return (
     <section id="rsvp">
+      <canvas id="confetti-holder"> </canvas>
       <div className="container center-align">
         <h3>{name}</h3>
         <h5>Gebruik asseblief hierdie vorm om te RSVP</h5>
@@ -88,7 +84,7 @@ const rsvp = (props) => {
             </button>
             <ModalYN
               UserID={url_param_id}
-              RSVPValue={RSVPValue}
+              RSVPValue={RSVPValue === "true"}
               Comment={Comment}
             />
           </form>
