@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import ModalYN from "./modalYesNo.js";
+import ModalOK from "../compnents/modalOK";
+import { API_URL } from "../config/index";
+import ConfettiGenerator from "confetti-js";
+import { Router, useRouter } from "next/router";
 
 if (typeof window !== "undefined") {
   const M = window;
@@ -8,12 +12,34 @@ if (typeof window !== "undefined") {
 }
 
 const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
+  const router = useRouter();
   const rsvpRef = useRef();
   const [RSVPValue, setRSVPValue] = useState(
     rsvp_date == null ? "" : attending.toString()
   );
   const [Comment, setComment] = useState(guest_comment);
   const [showModal, setshowModal] = useState(RSVPValue != "");
+  const [rsvpPosted, setRsvpPosted] = useState(false);
+
+  const confettiSettings = {
+    target: "confetti-holder",
+    max: "500",
+    size: "1",
+    animate: true,
+    props: ["square"],
+    colors: [
+      [165, 104, 246],
+      [230, 61, 135],
+      [0, 199, 228],
+      [253, 214, 126],
+    ],
+    clock: "30",
+    rotate: true,
+    width: "1920",
+    height: "1067",
+    start_from_edge: false,
+    respawn: false,
+  };
 
   useEffect(() => {
     var elems = document.querySelectorAll("select");
@@ -39,6 +65,59 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
     const val = e.target.value;
     setRSVPValue(val);
     setshowModal(val != "");
+  }
+
+  async function postUserData() {
+    const confetti = new ConfettiGenerator(confettiSettings);
+    const attending = RSVPValue === "true";
+
+    const bod = {
+      attending: RSVPValue,
+      guest_comment: Comment,
+    };
+    try {
+      const res = await fetch(
+        `${API_URL}/api/post_user_rsvp?UID=${url_param_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bod),
+        }
+      );
+      const result = await res.json();
+
+      if (!res.ok) {
+        router.push("/page404");
+        return res.status(404).json({ message: result });
+      }
+
+      M.toast({
+        html: "<h6>Dankie vir jou RSVP</h6>",
+        classes: "rounded green",
+        displayLength: 7000,
+      });
+      setTimeout(() => {
+        M.toast({
+          html: `<h6> ${
+            attending ? "Sien jou daar!! 👰💒" : "Ons gaan jou mis 😢"
+          }</h6>`,
+          classes: "rounded green",
+          displayLength: 5000,
+        });
+      }, 2000);
+
+      if (attending) {
+        confetti.render();
+        setTimeout(() => {
+          confetti.clear();
+        }, 20000);
+      }
+    } catch (e) {
+      router.push("/page404");
+      return e;
+    }
   }
 
   return (
@@ -83,9 +162,19 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
               RSVP
             </button>
             <ModalYN
-              UserID={url_param_id}
-              RSVPValue={RSVPValue === "true"}
-              Comment={Comment}
+              message={
+                <>
+                  Is jy seker dat jy
+                  <strong>
+                    {RSVPValue === "true"
+                      ? "Gaan Bywoon"
+                      : "Nie Gaan Bywoon Nie"}
+                  </strong>
+                </>
+              }
+              handleResult={() => {
+                postUserData();
+              }}
             />
           </form>
         </div>

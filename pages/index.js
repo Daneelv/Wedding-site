@@ -14,7 +14,7 @@ import Gallery from "../compnents/gallery";
 import Venue from "../compnents/Venue";
 import Parralax from "../compnents/Parralax";
 import Rsvp from "../compnents/Rsvp";
-import ModalInfoLoad from "../compnents/modalInfoLoad";
+import ModalOK from "../compnents/modalOK";
 
 export default function Home({ siteData }) {
   const [loading, setLoading] = useState(true);
@@ -32,12 +32,17 @@ export default function Home({ siteData }) {
   async function getUserInfo() {
     const qry = Router.query;
 
-    if (Object.keys(qry).length == 0) {
+    if (Object.keys(qry).length == 0 || qry.UID === "") {
       return Router.push("/page404");
     }
     try {
       const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`);
       const userData = await res.json();
+
+      if (!res.ok) {
+        return Router.push("/page404");
+      }
+
       setUserData(userData);
       setLoading(false);
       return;
@@ -56,7 +61,33 @@ export default function Home({ siteData }) {
           }}
         >
           <Layout>
-            <ModalInfoLoad />
+            <ModalOK
+              info={
+                <>
+                  <p>
+                    Die Afsluitingdatum vir RSVP'S is
+                    <strong> 2021-07-10 </strong>.
+                  </p>
+                  <p>
+                    As jy nie teen die afsluitings datum ge RSVP het nie, dan
+                    aanvaar ons dat jy nie die troue gaan bywoon nie.{" "}
+                  </p>
+                  <p>Maak asseblief seker van jou besluit voordat jy RSVP</p>
+                  <p>
+                    Indien jy nie kan RSVP nie weens n tegniese fout, skakel dan
+                    gerus vir Daneel of Maryke{" "}
+                  </p>
+                  <p>
+                    Hierdie uitnodiging is slegs vir jou bedoel.{" "}
+                    <strong>
+                      Ongelukkig word daar nie metgeselle toegelaat nie.
+                    </strong>
+                  </p>
+                </>
+              }
+              btnCaption={"Ek Verstaan"}
+              timeoutClick={true}
+            />
             <Banner bannerData={sectBanner} />
             <AboutUs sectAbout={sectAbout} />
             <Gallery galleryData={sectGallery} />
