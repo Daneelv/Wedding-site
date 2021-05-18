@@ -5,28 +5,26 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const ModalOK = ({ heading, info, btnCaption, timeoutClick = false }) => {
+const ModalOK = ({ heading, info, btnCaption }) => {
   useEffect(() => {
     const elems = document.querySelectorAll(".modal");
     M.Modal.init(elems, {});
 
-    if (timeoutClick) {
-      const btnClick = document.querySelector(".clickMe");
-      setTimeout(() => {
-        btnClick.click();
-      }, 1000);
-    }
+    const btnClick = document.querySelector(".clickMe");
+    setTimeout(() => {
+      btnClick.click();
+    }, 1000);
   }, []);
 
   return (
     <>
       <a
         className="clickMe hide waves-effect waves-light btn modal-trigger"
-        href="#ModalInfoLoad"
+        href="#modalStart"
       >
         Modal
       </a>
-      <div id="ModalInfoLoad" className="modal">
+      <div id="modalStart" className="modal">
         <div className="modal-content">
           <h4>{heading}</h4>
           {info}

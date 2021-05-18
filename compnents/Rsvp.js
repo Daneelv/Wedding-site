@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import ModalYN from "./modalYesNo.js";
-import ModalOK from "../compnents/modalOK";
+import ModalCal from "../compnents/modalCal";
 import { API_URL } from "../config/index";
 import ConfettiGenerator from "confetti-js";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 if (typeof window !== "undefined") {
   const M = window;
@@ -70,11 +70,12 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
   async function postUserData() {
     const confetti = new ConfettiGenerator(confettiSettings);
     const attending = RSVPValue === "true";
-
     const bod = {
       attending: RSVPValue,
       guest_comment: Comment,
     };
+
+    setRsvpPosted(false);
     try {
       const res = await fetch(
         `${API_URL}/api/post_user_rsvp?UID=${url_param_id}`,
@@ -93,11 +94,19 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
         return res.status(404).json({ message: result });
       }
 
+      if (attending) {
+        confetti.render();
+        setTimeout(() => {
+          confetti.clear();
+        }, 20000);
+      }
+
       M.toast({
         html: "<h6>Dankie vir jou RSVP</h6>",
         classes: "rounded green",
         displayLength: 7000,
       });
+
       setTimeout(() => {
         M.toast({
           html: `<h6> ${
@@ -106,14 +115,9 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
           classes: "rounded green",
           displayLength: 5000,
         });
-      }, 2000);
 
-      if (attending) {
-        confetti.render();
-        setTimeout(() => {
-          confetti.clear();
-        }, 20000);
-      }
+        attending && setRsvpPosted(true);
+      }, 2000);
     } catch (e) {
       router.push("/page404");
       return e;
@@ -161,23 +165,22 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
             >
               RSVP
             </button>
-            <ModalYN
-              message={
-                <>
-                  Is jy seker dat jy
-                  <strong>
-                    {RSVPValue === "true"
-                      ? "Gaan Bywoon"
-                      : "Nie Gaan Bywoon Nie"}
-                  </strong>
-                </>
-              }
-              handleResult={() => {
-                postUserData();
-              }}
-            />
           </form>
         </div>
+        <ModalYN
+          message={
+            <>
+              Is jy seker dat jy
+              <strong>
+                {RSVPValue === "true" ? " Gaan Bywoon" : " Nie Gaan Bywoon Nie"}
+              </strong>
+            </>
+          }
+          handleResult={() => {
+            postUserData();
+          }}
+        />
+        {rsvpPosted && <ModalCal />}
       </div>
     </section>
   );

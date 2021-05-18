@@ -86,7 +86,6 @@ export default function Home({ siteData }) {
                 </>
               }
               btnCaption={"Ek Verstaan"}
-              timeoutClick={true}
             />
             <Banner bannerData={sectBanner} />
             <AboutUs sectAbout={sectAbout} />
