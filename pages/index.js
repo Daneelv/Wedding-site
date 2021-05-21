@@ -91,7 +91,11 @@ export default function Home({ siteData }) {
             <AboutUs sectAbout={sectAbout} />
             <Gallery galleryData={sectGallery} />
             <Parralax parralax={sectParralax1} />
-            <InvitedPerson />
+            <InvitedPerson
+              message={userData.attr.welcome_msg}
+              image={userData.attr.guest_img}
+              name={userData.name}
+            />
             <Venue />
             <Parralax parralax={sectParralax1} />
             <Rsvp
@@ -115,10 +119,10 @@ export default function Home({ siteData }) {
           }}
         >
           <div className="row">
-            <div className="col m12 s12 l12 ">
+            <div className="col s12">
               <h1 className="left-align">Daneel</h1>
             </div>
-            <div className="col m12 s12 l12 ">
+            <div className="col s12">
               <Loader
                 type="Hearts"
                 color="red"
@@ -127,7 +131,7 @@ export default function Home({ siteData }) {
                 svgClass="my-custom-class"
               />
             </div>
-            <div className="col m12 s12 l12 ">
+            <div className="col s12">
               <h1 className="right-align">Maryke</h1>
             </div>
           </div>

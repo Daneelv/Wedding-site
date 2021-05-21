@@ -1,6 +1,6 @@
 import React from "react";
 
-const InvitedPerson = () => {
+const InvitedPerson = ({ message, image, name }) => {
   const style = {
     person: {
       height: "300px",
@@ -20,6 +20,9 @@ const InvitedPerson = () => {
     sect: {
       padding: "90px 0 60px 0",
     },
+    paragraph: {
+      padding: "5px 5% 5px 15%",
+    },
   };
 
   return (
@@ -27,27 +30,18 @@ const InvitedPerson = () => {
       <div className="container center-align">
         <div className="row">
           <div className="col s12 m6 l6">
-            <img
-              style={style.person}
-              className=""
-              src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg"
-            ></img>
+            <img style={style.person} className="" src={image}></img>
           </div>
           <div className="col m6 s12 l6">
             <div className="row">
               <div className="col m12 s12 l12" style={style.centreAlign}>
                 <div className="row">
                   <div className="col m12 s12 l12 ">
-                    <h3>Pietie</h3>
+                    <h3>Hallo {name}</h3>
                   </div>
                   <div className="col m12 s12 l12 ">
-                    <p className="left-align">
-                      Aliqua enim labore asdasd adasdasd asdasdasd asdasdasd
-                      asdasda enim adipisicing exercitation commodo deserunt
-                      labore veniam ad laboris in officia officia. Occaecat qui
-                      ullamco magna quis esse nisi officia dolor. Eiusmod
-                      officia elit quis ullamco ex nulla ut voluptate laborum et
-                      cillum.
+                    <p className="left-align" style={style.paragraph}>
+                      {message}
                     </p>
                   </div>
                 </div>
@@ -69,6 +63,14 @@ const InvitedPerson = () => {
       </div>
     </section>
   );
+};
+
+InvitedPerson.defaultProps = {
+  image: "./images/placeholder.png",
+  message: `In nisi adipisicing tempor ex nulla duis exercitation proident occaecat consequat. 
+    Quis nostrud ipsum eu nisi officia officia nostrud officia exercitation sunt eu officia. 
+    Irure magna aliqua irure eu duis duis do incididunt qui voluptate cupidatat ut ullamco. 
+    Magna dolor id voluptate minim. Reprehenderit voluptate tempor deserunt ullamco ullamco irure. Dolor minim eu magna sunt.`,
 };
 
 export default InvitedPerson;
