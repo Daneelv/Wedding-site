@@ -14,7 +14,7 @@ const Banner = (bannerData) => {
 
   const options = {
     indicators: false,
-    height: isMobile ? 300 : 800,
+    height: isMobile ? 300 : 700,
     duration: 800,
     interval: 6000,
   };

@@ -131,7 +131,7 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
         <h3>{name}</h3>
         <h5>Gebruik asseblief hierdie vorm om te RSVP</h5>
         <div className="row">
-          <form className="col s12" onSubmit={handleSubmit}>
+          <form className="col s12 m8 offset-m2" onSubmit={handleSubmit}>
             <div className="input-field col s12">
               <select
                 onChange={handleChange}

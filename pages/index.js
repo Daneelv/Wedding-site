@@ -90,7 +90,7 @@ export default function Home({ siteData }) {
             <Banner bannerData={sectBanner} />
             <AboutUs sectAbout={sectAbout} />
             <Gallery galleryData={sectGallery} />
-            <Parralax parralax={sectParralax1} />
+            {/* <Parralax parralax={sectParralax1} /> */}
             <InvitedPerson
               message={userData.attr.welcome_msg}
               image={userData.attr.guest_img}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import "materialize-css/dist/css/materialize.min.css";
 
 if (typeof window !== "undefined") {
@@ -13,9 +13,9 @@ const Parralax = (parraProps) => {
     M.Parallax.init(elems, {});
   }, []);
   return (
-    <div className="parallax-container hide-on-small-only">
+    <div className="parallax-container hide-on-small-only"  style={{height: "65vh"}} >
       <div className="parallax">
-        <img src={image} className="responsive-img"></img>
+        <img src={image} className="responsive-img" ></img>
       </div>
     </div>
   );

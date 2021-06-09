@@ -58,7 +58,7 @@ const Nav = () => {
                 <a href="#invitedPers">Jou hoekie</a>
               </li>
               <li>
-                <a href="#venue">Die Venue</a>
+                <a href="#venue">Details</a>
               </li>
               <li className={navStyles.btnRsvp}>
                 <a href="#rsvp">RSVP</a>
@@ -81,7 +81,7 @@ const Nav = () => {
           <a href="#invitedPers">Jou hoekie</a>
         </li>
         <li>
-          <a href="#venue">Die Venue</a>
+          <a href="#venue">Details</a>
         </li>
         <li>
           <a href="#rsvp" className="">
