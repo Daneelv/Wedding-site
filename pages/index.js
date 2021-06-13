@@ -87,7 +87,9 @@ export default function Home({ siteData }) {
               }
               btnCaption={"Ek Verstaan"}
             />
-            <Banner bannerData={sectBanner} />
+
+            <Banner />
+            {/* <Banner bannerData={sectBanner} /> */}
             <AboutUs sectAbout={sectAbout} />
             <Gallery galleryData={sectGallery} />
             {/* <Parralax parralax={sectParralax1} /> */}

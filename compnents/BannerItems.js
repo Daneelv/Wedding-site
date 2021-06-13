@@ -6,12 +6,15 @@ const BannerItems = (banner) => {
   return (
     <li>
       <img
-        style={{ backgroundPosition: position ? position : "center center" }}
+        style={{
+          backgroundPosition: position ? position : "center center",
+          boxShadow: "inset 0 0 0 2000px rgb(0 0 0 / 48%)",
+        }}
         src={url}
       ></img>
       <div className="caption center-align">
-        <h3>{tagline}</h3>
-        <h5 className="light grey-text text-lighten-3">{slogan}</h5>
+        <h2>{tagline}</h2>
+        <h4 className="light grey-text text-lighten-3">{slogan}</h4>
       </div>
     </li>
   );
