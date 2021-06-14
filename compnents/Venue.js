@@ -19,6 +19,7 @@ const venue = ({ image }) => {
       <div className="row">
         <div className="col s12 m3 center-align">
           <h3>Details</h3>
+          <hr className="style"/>
           <h5>Venue</h5>
           <p className="left-align">
             Aliqua quis laboris laborum aliquip et eiusmod sit nisi amet. Quis
@@ -27,6 +28,7 @@ const venue = ({ image }) => {
             eu est cupidatat. Proident id incididunt cupidatat fugiat nostrud id
             est consequat duis cillum.
           </p>
+          <hr className="style"/>
           <h5>Akkommodasie</h5>
           <p className="left-align">
             Aliqua quis laboris laborum aliquip et eiusmod sit nisi amet. Quis
@@ -35,7 +37,9 @@ const venue = ({ image }) => {
             eu est cupidatat. Proident id incididunt cupidatat fugiat nostrud id
             est consequat duis cillum.
           </p>
+          <hr className="style"/>
         </div>
+        
         <div className="col s12 m9 " style={style.backImage}>
           {/* <img style = {{marginBottom: "-25px"}} className="responsive-img" src={image}></img> */}
         </div>

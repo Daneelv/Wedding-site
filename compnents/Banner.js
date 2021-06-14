@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import "materialize-css/dist/css/materialize.min.css";
-import FontAwesome from "react-fontawesome";
 import banStyles from "../styles/Banner.module.css";
-// import BannerItems from "./BannerItems.js";
 
 if (typeof window !== "undefined") {
   const M = window;
@@ -13,8 +10,6 @@ const Banner = ({ image, weddingDate }) => {
   const [timerDays, setTimerDays] = useState("");
   useEffect(() => {
     Countdown();
-    // var elems = document.querySelectorAll(".slider");
-    // M.Slider.init(elems, { indicators: false });
   }, [timerDays]);
   return (
     <section
@@ -24,11 +19,12 @@ const Banner = ({ image, weddingDate }) => {
     >
       <div className="row">
         <div className="col s12">
-          <h2>{timerDays}</h2>
-          <h4>
-            Slanghoek <i className="material-icons center">filter_vintage</i>{" "}
+          <h1>{timerDays}</h1>
+          <h2>
+            Slanghoek <i className={`material-icons center ${banStyles.rotateMe}`} >filter_vintage</i>{" "}
             Rawsonville
-          </h4>
+          </h2>
+          <hr className="style"/>
           <span className={banStyles.iconExpand}>
             <a href="#about">
               <i className="material-icons center">expand_more</i>
@@ -53,9 +49,6 @@ const Banner = ({ image, weddingDate }) => {
       );
       let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      console.log(distance);
-
       distance < 0
         ? setTimerDays("Die knoop is deurgehak !!")
         : setTimerDays(`${days}d ${hours}h ${minutes}m ${seconds}s`);

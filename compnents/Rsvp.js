@@ -142,7 +142,7 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
                 <option value="false">
                   Ongelukkig kan ek dit nie maak nie
                 </option>
-                <option value="true">Ek is defnetief daar!!</option>
+                <option value="true">Ek is definitief daar!!</option>
               </select>
               <label>Sien ons jou op ons groot dag?</label>
             </div>

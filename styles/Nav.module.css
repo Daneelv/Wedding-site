@@ -1,7 +1,3 @@
-
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-
 .navbar {
 
     background-color: #bcaaa4 ;
@@ -25,3 +21,13 @@
 
 
 }
+
+.logo {
+    display: inline !important;
+    color: red;
+    }
+    
+.inits {
+    font-size: 25px;
+    display: inline;
+    }

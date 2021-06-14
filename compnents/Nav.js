@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import Link from 'next/link';
 import navStyles from "../styles/Nav.module.css";
 import "materialize-css/dist/css/materialize.min.css";
 
@@ -8,15 +7,7 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const style = {
-  Logo: {
-    display: "inline",
-    color: "red",
-  },
-  inits: {
-    fontSize: "25px",
-  },
-};
+
 
 const Nav = () => {
   useEffect(() => {
@@ -37,11 +28,11 @@ const Nav = () => {
               <i className="material-icons">menu</i>
             </a>
             <a href="#" className="logo">
-              <span style={style.inits}>Daneel</span>
-              <i className="material-icons tiny" style={style.Logo}>
+            <h5 className={navStyles.inits}>Daneel</h5>{" "}
+              <i className={`material-icons tiny ${navStyles.logo}`} >
                 favorite
-              </i>
-              <span style={style.inits}>Maryke</span>
+              </i>{" "}
+               <h5 className={navStyles.inits}>Maryke</h5>
             </a>
 
             <ul id="nav-mobile" className="right hide-on-med-and-down">

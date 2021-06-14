@@ -21,7 +21,9 @@ const AboutUs = (sectAbout) => {
           </div>
           <div className="col m3 s12">
             <h3 className="center-align">Ons Storie</h3>
+            <hr className="style"/>
             <p className="left-align">{paragraph}</p>
+            <hr className="style"/>
           </div>
         </div>
       {/* </div> */}
