@@ -49,7 +49,7 @@ const InvitedPerson = ({ message, image, name }) => {
               <div className="col m12 s12 l12 ">
                 <a
                   style={style.butn}
-                  className=" left-align waves-effect waves-light btn-large btn-flat deep-orange lighten-3"
+                  className=" btn left-align waves-effect waves-light btn-large btn-flat"
                   href="#rsvp"
                 >
                   <strong>

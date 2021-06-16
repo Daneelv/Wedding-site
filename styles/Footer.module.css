@@ -1,0 +1,16 @@
+.sect{
+  height: 20vh; 
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.sect a { 
+  color: var(--secondary);
+}
+

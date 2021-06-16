@@ -1,0 +1,34 @@
+.four_zero_four {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--secondary);
+}
+
+.four_zero_four i { 
+  font-size: 100px;
+  color: var(--primary);
+}
+
+
+.four_zero_four h1 { 
+  font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.four_zero_four p { 
+  line-height: 1.5;
+
+}
+
+.four_zero_four a { 
+  color: inherit;
+
+}
+
+

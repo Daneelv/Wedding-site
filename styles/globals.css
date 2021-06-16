@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
+:root {
+  --primary: #bcaaa4;
+  --secondary: #efebe9;
+}
+
 html,
 body {
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -25,6 +32,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #fff !important;
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -32,9 +44,10 @@ a {
 #confetti-holder {
   position: absolute;
   z-index: -1;
-  bottom: -122px;
-  height: 91vh;
+  bottom: -258px;
+  height: 120vh;
   width: 100vw;
+  display: none;
 }
 
 #rsvp {
@@ -48,4 +61,52 @@ hr.style {
   height: 2px;
   background-Image: linear-gradient(to right, rgb(222 230 135 / 0%), rgb(188 194 118 / 90%), rgba(0, 0, 0, 0));
 
+}
+.btn {
+  background-color: var(--primary) !important;
+}
+
+
+.dropdown-content li> a, 
+.dropdown-content li> span {
+  color: var(--primary) !important;
+}
+
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid var(--primary) !important;
+}
+
+.toast.rounded {
+  background-color: var(--primary);
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary); 
+}
+
+
+
+@media (max-width: 600px) {
+  #confetti-holder {
+    bottom: -191px;
+  }
 }

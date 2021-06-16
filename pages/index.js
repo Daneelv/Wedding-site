@@ -33,21 +33,21 @@ export default function Home({ siteData }) {
     const qry = Router.query;
 
     if (Object.keys(qry).length == 0 || qry.UID === "") {
-      return Router.push("/page404");
+      return Router.push("/404");
     }
     try {
       const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`);
       const userData = await res.json();
 
       if (!res.ok) {
-        return Router.push("/page404");
+        return Router.push("/404");
       }
 
       setUserData(userData);
       setLoading(false);
       return;
     } catch {
-      return Router.push("/page404");
+      return Router.push("/404");
     }
   }
 
@@ -108,7 +108,7 @@ export default function Home({ siteData }) {
               url_param_id={userData.url_param_id}
             />
 
-            <footer className={styles.footer}></footer>
+            {/* <footer className={styles.footer}></footer> */}
           </Layout>
         </div>
       ) : (

@@ -1,6 +1,6 @@
 .navbar {
 
-    background-color: #bcaaa4 ;
+    background-color: var(--primary) ;
     padding: 0px 15px 0px 15px;
 }
 
@@ -10,7 +10,7 @@
 
 
 .navbar a:hover {
-    color: #FFAB91;;
+    color: var(--secondary);
 
 }
 

@@ -20,7 +20,8 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
   const [Comment, setComment] = useState(guest_comment);
   const [showModal, setshowModal] = useState(RSVPValue != "");
   const [rsvpPosted, setRsvpPosted] = useState(false);
-
+  const [confettiRender, setconfettiRender] = useState(false);
+ 
   const confettiSettings = {
     target: "confetti-holder",
     max: "500",
@@ -37,15 +38,15 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
     rotate: true,
     width: "1920",
     height: "1067",
-    start_from_edge: false,
+    start_from_edge: true,
     respawn: false,
   };
 
   useEffect(() => {
-    var elems = document.querySelectorAll("select");
+    let elems = document.querySelectorAll("select");
     M.FormSelect.init(elems, {});
 
-    var txtArea = document.querySelector("#comments");
+    let txtArea = document.querySelector("#comments");
     M.textareaAutoResize(txtArea);
     M.updateTextFields();
   }, []);
@@ -55,7 +56,7 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
       rsvpRef.current.focus();
       M.toast({
         html: "Kies asseblief n geldige RSVP opsie",
-        classes: "rounded red",
+        classes: "rounded toast",
       });
     }
     e.preventDefault();
@@ -70,6 +71,7 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
   async function postUserData() {
     const confetti = new ConfettiGenerator(confettiSettings);
     const attending = RSVPValue === "true";
+    const confettiElement = document.getElementById("confetti-holder");
     const bod = {
       attending: RSVPValue,
       guest_comment: Comment,
@@ -90,46 +92,51 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
       const result = await res.json();
 
       if (!res.ok) {
-        router.push("/page404");
+        router.push("/404");
         return res.status(404).json({ message: result });
       }
 
       if (attending) {
+        setconfettiRender(true);
+        confettiElement.style.display = "inline-block";
         confetti.render();
         setTimeout(() => {
           confetti.clear();
+          confettiElement.style.display = "none";
+          setconfettiRender(false);
         }, 20000);
       }
 
       M.toast({
-        html: "<h6>Dankie vir jou RSVP</h6>",
-        classes: "rounded green",
+        html: "<p>Dankie vir jou RSVP</p>",
+        classes: "rounded toast",
         displayLength: 7000,
       });
 
       setTimeout(() => {
         M.toast({
-          html: `<h6> ${
+          html: `<p> ${
             attending ? "Sien jou daar!! 👰💒" : "Ons gaan jou mis 😢"
-          }</h6>`,
-          classes: "rounded green",
+          }</p>`,
+          classes: "rounded toast",
           displayLength: 5000,
         });
 
         attending && setRsvpPosted(true);
       }, 2000);
     } catch (e) {
-      router.push("/page404");
+      router.push("/404");
+      console.log(e)
       return e;
     }
   }
 
   return (
-    <section id="rsvp">
+    <section id="rsvp"  style = {{margin: "45px 0 45px 0"}}>
       <canvas id="confetti-holder"> </canvas>
       <div className="container center-align">
         <h3>{name}</h3>
-        <h5>Gebruik asseblief hierdie vorm om te RSVP</h5>
+        <h5 style={{paddingBottom: "20px"}}>Gebruik asseblief hierdie vorm om te RSVP</h5>
         <div className="row">
           <form className="col s12 m8 offset-m2" onSubmit={handleSubmit}>
             <div className="input-field col s12">
@@ -161,7 +168,7 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
             </div>
             <button
               data-target="modalConfirmRSVP"
-              className={showModal ? "btn modal-trigger" : "btn"}
+              className={showModal && !confettiRender ? "btn modal-trigger" : "btn"}
             >
               RSVP
             </button>
