@@ -28,7 +28,7 @@ h1,h2,h3,h4,h5,h6 {
 
 
 a {
-  color: inherit;
+  color: var(--primary);
   text-decoration: none;
 }
 
@@ -70,6 +70,16 @@ hr.style {
 .dropdown-content li> a, 
 .dropdown-content li> span {
   color: var(--primary) !important;
+}
+
+.materialize-textarea:focus {
+  border-bottom: 1px solid var(--primary) !important;
+  box-shadow: 0 1px 0 0 var(--primary) !important;
+  
+}
+
+.active {
+  color: #9e9e9e !important;
 }
 
 .select-wrapper input.select-dropdown:focus {

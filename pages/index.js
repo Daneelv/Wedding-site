@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { API_URL } from "../config/index";
 
 import Loader from "react-loader-spinner";
-import styles from "../styles/Layout.module.css";
+import {getWeddingDay,getStringDate, getStringTime, getStringDateTime} from "../helpers/dateTime"
 
 // Components
 import Layout from "../compnents/Layout";
@@ -20,8 +20,17 @@ export default function Home({ siteData }) {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
   const Router = useRouter();
-  const { sectBanner, sectAbout, sectGallery, sectParralax1 } =
+  const { sectBanner, sectAbout, sectGallery, sectParralax1, Global } =
     siteData.content_attr;
+
+  const{weddingDate,RSVPCutOff1,RSVPCutOff2 } = Global;
+  
+  const StringWeddingDate =  getStringDate(weddingDate);
+  const StringWeddingTime =  getStringTime(weddingDate);
+  const StringWeddingDay =  getWeddingDay(weddingDate)
+
+  const StringRSVPCutOff1 = getStringDateTime(RSVPCutOff1);
+  const StringRSVPCutOff2 = getStringDateTime(RSVPCutOff2);
 
   useEffect(() => {
     if (Router.isReady) {
@@ -51,6 +60,8 @@ export default function Home({ siteData }) {
     }
   }
 
+  console.log(userData)
+
   return (
     <>
       {loading === false ? (
@@ -61,38 +72,38 @@ export default function Home({ siteData }) {
           }}
         >
           <Layout>
-            <ModalOK
-              info={
-                <>
-                  <p>
-                    Die Afsluitingdatum vir RSVP'S is
-                    <strong> 2021-07-10 </strong>.
-                  </p>
-                  <p>
-                    As jy nie teen die afsluitings datum ge RSVP het nie, dan
-                    aanvaar ons dat jy nie die troue gaan bywoon nie.{" "}
-                  </p>
-                  <p>Maak asseblief seker van jou besluit voordat jy RSVP</p>
-                  <p>
-                    Indien jy nie kan RSVP nie weens n tegniese fout, skakel dan
-                    gerus vir Daneel of Maryke{" "}
-                  </p>
-                  <p>
-                    Hierdie uitnodiging is slegs vir jou bedoel.{" "}
-                    <strong>
-                      Ongelukkig word daar nie metgeselle toegelaat nie.
-                    </strong>
-                  </p>
-                </>
-              }
-              btnCaption={"Ek Verstaan"}
-            />
+           { !userData.infopopupaccept && <ModalOK
+                info={
+                  <>
+                    <p>
+                      Die Afsluitingdatum vir RSVP'S is
+                      <strong style = {{fontWeight: "600"}}> {userData.cutoff2 ? StringRSVPCutOff2 : StringRSVPCutOff1} </strong>
+                    </p>
+                    <p>
+                      As jy nie teen die afsluitings datum ge RSVP het nie, dan
+                      aanvaar ons dat jy nie die troue gaan bywoon nie.{" "}
+                    </p>
+                    <p>Maak asseblief seker van jou besluit voordat jy RSVP</p>
+                    <p>
+                      Indien jy nie kan RSVP nie weens n tegniese fout, skakel dan
+                      gerus vir Daneel of Maryke{" "}
+                    </p>
+                    <p>
+                      Hierdie uitnodiging is slegs vir jou bedoel.{" "}
+                      <strong>
+                        Ongelukkig word daar nie metgeselle toegelaat nie.
+                      </strong>
+                    </p>
+                  </>
+                }
+                url_param_id = {userData.url_param_id}
+                btnCaption={"Ek Verstaan"}
+              /> 
+            }
 
             <Banner />
-            {/* <Banner bannerData={sectBanner} /> */}
             <AboutUs sectAbout={sectAbout} />
             <Gallery galleryData={sectGallery} />
-            {/* <Parralax parralax={sectParralax1} /> */}
             <InvitedPerson
               message={userData.attr.welcome_msg}
               image={userData.attr.guest_img}
@@ -107,8 +118,6 @@ export default function Home({ siteData }) {
               rsvp_date={userData.rsvp_date}
               url_param_id={userData.url_param_id}
             />
-
-            {/* <footer className={styles.footer}></footer> */}
           </Layout>
         </div>
       ) : (
@@ -118,13 +127,17 @@ export default function Home({ siteData }) {
             background: "#F2F2F2",
             display: "flex",
             justifyContent: "center",
+            alignContent: "center",
+            flexWrap: "nowrap",
+            flexDirection: "row",
+            alignItems: "center",
           }}
         >
           <div className="row">
             <div className="col s12">
               <h1 className="left-align">Daneel</h1>
             </div>
-            <div className="col s12">
+            <div className="col s12" style ={{textAlign: "center"}}>
               <Loader
                 type="Hearts"
                 color="red"

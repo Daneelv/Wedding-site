@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import Footer from "./Footer"
-// import styles from "../styles/Layout.module.css";
 import Head from "next/head";
 
 const Layout = ({ children }) => {
@@ -8,7 +7,7 @@ const Layout = ({ children }) => {
     <>
       <Head>
         <title>Daneel & Maryke Troue</title>
-        <link rel="icon" href="/heart.png" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       </Head>
       <Nav />

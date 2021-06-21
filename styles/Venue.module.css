@@ -1,0 +1,10 @@
+
+
+.venue a {
+  color: var(--primary);;
+  text-decoration: underline;
+}
+
+.venue a:hover {
+  color: var(--secondary) !important;
+}

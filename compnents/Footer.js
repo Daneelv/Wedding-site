@@ -25,11 +25,11 @@ const ImportantInfo = (e) => {
   return (
     <section id="footer" className= {style.sect}>
         <div className="row">
-        <div className="col s12">
+        <div className="col s12"  style ={{paddingBottom: "40px"}}>
           <a href="" onClick = {(e)=>{ImportantInfo(e)}}>Belangrikke Inligting</a>
           </div>
           <div className="col s12">
-            <p>Website Designed by <a href="https://www.linkedin.com/in/daneel-v-13136051/" target="_blank"> The Groom </a> | Copyright ©️ </p>
+            <p>Website Designed by <a href="https://www.linkedin.com/in/daneel-v-13136051/" target="_blank"> The Groom </a> | Copyright ©️ {new Date().getFullYear()} </p>
           </div>
         </div>
     </section>
