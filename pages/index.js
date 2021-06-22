@@ -156,7 +156,7 @@ export default function Home({ siteData }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const res = await fetch(`${API_URL}/api/get_site_data`);
   const siteData = await res.json();
   return {
