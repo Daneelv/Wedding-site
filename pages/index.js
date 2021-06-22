@@ -45,12 +45,7 @@ export default function Home({ siteData }) {
       return Router.push("/404");
     }
     try {
-      const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        }
-      });
+      const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`);
       const userData = await res.json();
 
       if (!res.ok) {
@@ -64,9 +59,6 @@ export default function Home({ siteData }) {
       return Router.push("/404");
     }
   }
-
-  console.log(userData)
-
   return (
     <>
       {loading === false ? (
