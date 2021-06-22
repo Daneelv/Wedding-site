@@ -126,7 +126,6 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
       }, 2000);
     } catch (e) {
       router.push("/404");
-      console.log(e)
       return e;
     }
   }

@@ -41,7 +41,6 @@ async function postUserPopupConfirm() {
     }
   } catch (e) {
     router.push("/404");
-    console.log(e)
     return e;
   }
 } 

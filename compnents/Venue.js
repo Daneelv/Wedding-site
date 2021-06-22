@@ -67,5 +67,5 @@ const venue = ({ image }) => {
 export default venue;
 
 venue.defaultProps = {
-  image: "./images/Detail.jpg",
+  image: "/Detail.jpg",
 };
