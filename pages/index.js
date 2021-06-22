@@ -48,6 +48,7 @@ export default function Home({ siteData }) {
       const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`, {
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': `${API_URL}/api/get_user*`,
         }
       });
       const userData = await res.json();
