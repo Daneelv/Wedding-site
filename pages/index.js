@@ -8,7 +8,7 @@ import {getWeddingDay,getStringDate, getStringTime, getStringDateTime} from "../
 // Components
 import Layout from "../compnents/Layout";
 import Banner from "../compnents/Banner";
-import AboutUs from "../compnents/Aboutus";
+import AboutUs from "../compnents/AboutUs";
 import InvitedPerson from "../compnents/InvitedPerson";
 import Gallery from "../compnents/gallery";
 import Venue from "../compnents/Venue";
