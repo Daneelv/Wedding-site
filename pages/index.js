@@ -157,7 +157,7 @@ export default function Home({ siteData }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(`http://localhost:3000/api/get_site_data`);
+  const res = await fetch(`${API_URL}/api/get_site_data`);
   const siteData = await res.json();
   return {
     props: { siteData },
