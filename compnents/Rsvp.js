@@ -85,6 +85,7 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify(bod),
         }

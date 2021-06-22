@@ -30,6 +30,7 @@ async function postUserPopupConfirm() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       }
     );
