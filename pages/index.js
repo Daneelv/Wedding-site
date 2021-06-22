@@ -69,7 +69,7 @@ export default function Home({ siteData }) {
           }}
         >
           <Layout>
-           { !userData.infopopupaccept && <ModalOK
+           <ModalOK
                 info={
                   <>
                     <p>
@@ -95,8 +95,9 @@ export default function Home({ siteData }) {
                 }
                 url_param_id = {userData.url_param_id}
                 btnCaption={"Ek Verstaan"}
+                infopopupAccepted = {userData.infopopupaccept} 
               /> 
-            }
+            
 
             <Banner />
             <AboutUs sectAbout={sectAbout} />

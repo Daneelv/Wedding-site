@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const ModalOK = ({ heading, info, btnCaption, url_param_id }) => {
+const ModalOK = ({ heading, info, btnCaption, url_param_id, infopopupAccepted }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -15,9 +15,12 @@ const ModalOK = ({ heading, info, btnCaption, url_param_id }) => {
     M.Modal.init(elems, {});
 
     const btnClick = document.querySelector(".clickMe");
-    setTimeout(() => {
-      btnClick.click();
-    }, 1000);
+
+    {!infopopupAccepted &&
+      setTimeout(() => {
+        btnClick.click();
+      }, 1000);
+    }
   }, []);
 
 
