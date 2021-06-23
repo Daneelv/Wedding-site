@@ -17,7 +17,7 @@ function getStringDateTime(aDate) {
     return `${getStringDate(aDate)} ${getStringTime(aDate)}`;
 };
 
-function getWeddingDay(aDate) {
+function getStringDay(aDate) {
     const strDate =  new Date(aDate);
     return `${day[strDate.getDay()]}`;
 }
@@ -27,5 +27,5 @@ export {
     getStringTime,
     getStringDate,
     getStringDateTime,
-    getWeddingDay
+    getStringDay
 }

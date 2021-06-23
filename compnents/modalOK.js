@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const ModalOK = ({ heading, info, btnCaption, url_param_id, infopopupAccepted }) => {
+const ModalOK = ({ cuttOff,heading, info, btnCaption, url_param_id, infopopupAccepted }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -24,30 +24,29 @@ const ModalOK = ({ heading, info, btnCaption, url_param_id, infopopupAccepted })
   }, []);
 
 
-async function postUserPopupConfirm() {
-  // e.preventDefault();
-  try {
-    const res = await fetch(
-      `${API_URL}/api/post_user_popup_accept?UID=${url_param_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
-    const result = await res.json();
+  async function postUserPopupConfirm() {
+    try {
+      const res = await fetch(
+        `${API_URL}/api/post_user_popup_accept?UID=${url_param_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+      const result = await res.json();
 
-    if (!res.ok) {
+      if (!res.ok) {
+        router.push("/404");
+        return res.status(404).json({ message: result });
+      }
+    } catch (e) {
       router.push("/404");
-      return res.status(404).json({ message: result });
+      return e;
     }
-  } catch (e) {
-    router.push("/404");
-    return e;
-  }
-} 
+  } 
 
   return (
     <>
@@ -60,13 +59,18 @@ async function postUserPopupConfirm() {
       <div id="modalStart" className="modal">
         <div className="modal-content">
           <h4>{heading}</h4>
-          {info}
+          <p>Die Afsluitingdatum vir RSVP'S is <strong style = {{fontWeight: "600"}}> {cuttOff}</strong></p>
+          
+          {info.map((ele, id) => {
+            return (<p key={id} > {ele}</p>)
+          })}
+
         </div>
         <div className="modal-footer">
           <a
             onClick={postUserPopupConfirm}
             href="#!"
-            className="modal-close waves-effect waves-green btn-flat"
+            className="modal-close waves-effect  btn-flat"
           >
             {btnCaption}
           </a>
@@ -82,3 +86,6 @@ ModalOK.defaultProps = {
 };
 
 export default ModalOK;
+
+
+

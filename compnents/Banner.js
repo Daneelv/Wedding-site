@@ -7,32 +7,38 @@ if (typeof window !== "undefined") {
 }
 
 const Banner = ({ image, weddingDate }) => {
+
   const [timerDays, setTimerDays] = useState("");
+
   useEffect(() => {
     Countdown();
   }, [timerDays]);
+
   return (
-    <section
-      id="banner"
-      className={banStyles.banner}
-      style={{ background: `url(${image}) center center / cover no-repeat` }}
-    >
-      <div className="row">
-        <div className="col s12">
-          <h1>{timerDays}</h1>
-          <h2>
-            Slanghoek <i className={`material-icons center ${banStyles.rotateMe}`} >filter_vintage</i>{" "}
-            Rawsonville
-          </h2>
-          <hr className="style"/>
-          <span className={banStyles.iconExpand}>
-            <a href="#about">
-              <i className="material-icons center">expand_more</i>
-            </a>
-          </span>
-        </div>
-      </div>
-    </section>
+      <section
+        id="banner"
+        className={banStyles.banner}
+        style={{ background: `url(${image}) center center / cover no-repeat` }}
+      >
+        {timerDays !== "" && (
+          <div className="row" className = {banStyles.fadein}>
+            <div className="col s12">
+              <h1>{timerDays}</h1>
+              <h2>
+                Slanghoek <i className={`material-icons center ${banStyles.rotateMe}`} >filter_vintage</i>{" "}
+                Rawsonville
+              </h2>
+              <hr className="style"/>
+              <span className={banStyles.iconExpand}>
+                <a href="#about">
+                  <i className="material-icons center">expand_more</i>
+                </a>
+              </span>
+            </div>
+          </div>
+        )}
+      </section>
+    
   );
 
   function Countdown() {

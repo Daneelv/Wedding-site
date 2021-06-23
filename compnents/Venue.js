@@ -1,7 +1,13 @@
 import React from "react";
+
+import {getStringDate, getStringTime} from "../helpers/dateTime"
 import Venue from "../styles/Venue.module.css";
 
-const venue = ({ image }) => {
+
+const venue = ({ image, StringWeddingDate, StringWeddingTime , sectWeddingInfo, IsFamilyMember }) => {
+  
+  const {directionsURL, directionsString, Accomodation, FamilyBraai } = sectWeddingInfo;
+
   const style = {
     iframe: {
       height: "60vh",
@@ -23,40 +29,37 @@ const venue = ({ image }) => {
           <hr className="style"/>
           <h5>Seremonie</h5>
             <ul>
-              <li>Datum: Saterdag 18 December 2021</li>
-              <li>Tyd: 15:00</li>
-              <li>Plek: <a href="https://goo.gl/maps/6SRdWFvWwc9RFAgh7" target="_blank">Slanghoek Rawsonville</a> </li>
+              <li>Datum: {StringWeddingDate} </li>
+              <li>Tyd: {StringWeddingTime}</li>
+              <li>Plek: <a href={directionsURL} target="_blank">{directionsString}</a> </li>
             </ul>
           <hr className="style"/>
 
           <h5>Akkommodasie</h5>
           <p className="left-align">
-            Aliqua quis laboris laborum aliquip et eiusmod sit nisi amet. Quis
-            quis adipisicing et deserunt duis incididunt sit. Fugiat nostrud
-            incididunt culpa laboris ea laboris occaecat proident sunt eiusmod
-            eu est cupidatat. Proident id incididunt cupidatat fugiat nostrud id
-            est consequat duis cillum.
+              {Accomodation.Description}
           </p>
            <h5>Kontak Nommer:</h5>
-            <a href="tel:0726312089">0726312089</a>
+            <a href={`tel:${Accomodation.telNo}`}>{Accomodation.telNo}</a>
           <hr className="style"/>
 
-          <h5>Familie Braai</h5>
-          <p className="left-align">
-            
+          {IsFamilyMember && 
+          (  
+            <>
+            <h5>Familie Braai</h5>
+            <p className="left-align">
+                {FamilyBraai.Description}
+            </p>
+            <ul>
+                <li>Datum: {getStringDate(FamilyBraai.braaiDate)} </li>
+                <li>Tyd: {getStringTime(FamilyBraai.braaiDate)}</li>
+                <li>Plek: <a href={directionsURL} target="_blank">{directionsString}</a> </li>
+              </ul>
+            <hr className="style"/>
+            </>
+          )}
 
-          </p>
-          <ul>
-              <li>Datum: Vrydag 17 December 2021</li>
-              <li>Tyd: 16:00</li>
-              <li>Plek: <a href="https://goo.gl/maps/6SRdWFvWwc9RFAgh7" target="_blank">Slanghoek Rawsonville</a></li>
-            </ul>
-          <hr className="style"/>
-
-
-
-        </div>
-        
+        </div> 
         <div className="col s12 m9 " style={style.backImage}>
         </div>
       </div>
@@ -68,4 +71,7 @@ export default venue;
 
 venue.defaultProps = {
   image: "/Detail.jpg",
+  StringWeddingDate: "18 December 2021",
+  StringWeddingDay: "Saterdag ",
+  StringWeddingTime: "16:00"
 };

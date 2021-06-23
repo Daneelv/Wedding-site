@@ -9,6 +9,7 @@
   flex-wrap: nowrap;
   color: #fff;
   text-align: center;
+  animation: fadeIn linear 0.5s;
 }
 
 
@@ -23,7 +24,7 @@
 
 .iconExpand i {
   font-size: 5rem;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   transform: scale(1);
   animation: pulse 3s infinite;
 }
@@ -34,6 +35,22 @@
   color:  #cbcba2f0;
 }
 
+
+.fadein{
+  animation: fadeIn linear 4s;
+}
+
+
+
+@media (max-width: 600px) {
+  .banner h1 {
+    font-size: 3.4rem;
+  }
+
+  .banner h2 {
+    font-size: 2.3rem;
+  }
+}
 
 
 @keyframes pulse {
@@ -51,7 +68,6 @@
 }
 
 
-
 @keyframes rotating {
   from {
     transform: rotate(0deg);
@@ -62,17 +78,7 @@
 }
 
 
-
-@media (max-width: 600px) {
-  .banner h1 {
-    font-size: 4rem;
-  }
-
-  .banner h2 {
-    font-size: 2.5rem;
-  }
-
-
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
-
-

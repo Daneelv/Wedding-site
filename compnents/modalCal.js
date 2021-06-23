@@ -70,7 +70,7 @@ const ModalCal = ({ heading, btnCaption }) => {
         <div className="modal-footer">
           <a
             href="#!"
-            className="modal-close waves-effect waves-green btn-flat"
+            className="modal-close waves-effect btn-flat"
           >
             {btnCaption}
           </a>

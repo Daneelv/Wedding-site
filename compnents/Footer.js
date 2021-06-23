@@ -25,7 +25,7 @@ const ImportantInfo = (e) => {
   return (
     <section id="footer" className= {style.sect}>
         <div className="row">
-        <div className="col s12"  style ={{paddingBottom: "40px"}}>
+        <div className={`${style.padd} "col s12" `}>
           <a href="" onClick = {(e)=>{ImportantInfo(e)}}>Belangrikke Inligting</a>
           </div>
           <div className="col s12">
