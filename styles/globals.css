@@ -138,4 +138,11 @@ hr.style {
     height: 45px !important;
     line-height: 45px !important;
   }
+
+  .modal-content p {
+    font-size: 13px !important;
+  }
+  .modal-content > p strong {
+    font-size: 12px !important;
+}
 }
