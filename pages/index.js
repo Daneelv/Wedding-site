@@ -46,7 +46,6 @@ export default function Home({ siteData }) {
 
   async function getUserInfo() {
     const qry = Router.query;
-    alert(qry.UID)
     if (Object.keys(qry).length == 0 || qry.UID === "") {
       return Router.push("/404");
     }
@@ -54,9 +53,6 @@ export default function Home({ siteData }) {
       
       const res = await fetch(`${API_URL}/api/get_user?UID=${qry.UID}`);
       const userData = await res.json();
-
-      alert(res.status)
-
       if (!res.ok) {
         return Router.push("/404");
       }
