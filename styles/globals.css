@@ -126,9 +126,16 @@ hr.style {
 }
 
 
-
 @media (max-width: 600px) {
   #confetti-holder {
-    bottom: -191px;
+    bottom: -100px;
+  }
+
+  .modal-content h4 {
+    font-size: 22px !important;
+  }
+  .modal-content.btn-large {
+    height: 45px !important;
+    line-height: 45px !important;
   }
 }
