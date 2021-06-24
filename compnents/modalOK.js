@@ -32,7 +32,7 @@ const ModalOK = ({ cuttOff,heading, info, btnCaption, url_param_id, infopopupAcc
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Request-Headers": "Content-Type"
           },
         }
       );
