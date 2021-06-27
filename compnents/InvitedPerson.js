@@ -67,10 +67,7 @@ const InvitedPerson = ({ message, image, name }) => {
 
 InvitedPerson.defaultProps = {
   image: "/placeholder.png",
-  message: `In nisi adipisicing tempor ex nulla duis exercitation proident occaecat consequat. 
-    Quis nostrud ipsum eu nisi officia officia nostrud officia exercitation sunt eu officia. 
-    Irure magna aliqua irure eu duis duis do incididunt qui voluptate cupidatat ut ullamco. 
-    Magna dolor id voluptate minim. Reprehenderit voluptate tempor deserunt ullamco ullamco irure. Dolor minim eu magna sunt.`,
+  message: `Ons sien baie uit om die spesiale dag saam met jou te vier.`,
 };
 
 export default InvitedPerson;
