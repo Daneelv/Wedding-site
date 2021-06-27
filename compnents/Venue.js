@@ -7,7 +7,7 @@ import Venue from "../styles/Venue.module.css";
 const venue = ({ image, StringWeddingDate, StringWeddingTime , sectWeddingInfo, IsFamilyMember }) => {
   
   const {directionsURL, directionsString, Accomodation, FamilyBraai } = sectWeddingInfo;
-
+  
   const style = {
     iframe: {
       height: "60vh",
@@ -40,7 +40,10 @@ const venue = ({ image, StringWeddingDate, StringWeddingTime , sectWeddingInfo, 
               {Accomodation.Description}
           </p>
            <h5>Kontak Nommer:</h5>
-            <a href={`tel:${Accomodation.telNo}`}>{Accomodation.telNo}</a>
+           <ul className = {Venue.contact}>
+              <li> <i className={"material-icons center"} >phone</i> <a href={`tel:${Accomodation.telNo}`}>{Accomodation.telNo}</a> </li>
+              <li> <i className={"material-icons center"} >phone_iphone</i> <a href={`tel:${Accomodation.celNo}`}>{Accomodation.celNo}</a></li>
+            </ul>
           <hr className="style"/>
 
           {IsFamilyMember && 

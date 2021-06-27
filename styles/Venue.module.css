@@ -8,3 +8,13 @@
 .venue a:hover {
   color: var(--secondary) !important;
 }
+
+
+.contact {
+  line-height : 30px;
+}
+
+.contact li i {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
