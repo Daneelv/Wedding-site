@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "background-image-on-load": "^1.1.0",
     "calendar-link": "^2.1.1",
     "confetti-js": "0.0.18",
     "cors": "^2.8.5",

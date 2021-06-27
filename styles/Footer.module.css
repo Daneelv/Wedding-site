@@ -14,10 +14,19 @@
   color: var(--secondary);
 }
 
+.padd {
+  padding-bottom: 50px !important;
+  font-size: 1rem !important;
+  }
 
-@media (min-width: 800px) {
+
+@media (max-width: 600px) {
   .padd {
-    padding-Bottom: 40px !important;
+    padding-bottom: 20px !important;  
+  }
+
+  .sect p {
+  font-size: 11px !important;
   }
 }
 

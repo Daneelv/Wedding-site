@@ -58,7 +58,7 @@ const Nav = () => {
           </div>
         </nav>
       </div>
-      <ul className="sidenav" id="mobile-nav">
+      <ul className="sidenav sidenav-close" id="mobile-nav" >
         {/* <li>
           <a href="#banner">Tuis</a>
         </li> */}

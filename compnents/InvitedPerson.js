@@ -26,7 +26,7 @@ const InvitedPerson = ({ message, image, name }) => {
   };
 
   return (
-    <section id="invitedPers" className="brown lighten-5" style={style.sect}>
+    <section id="invitedPers" className="bg-color" style={style.sect}>
       <div className="container center-align">
         <div className="row">
           <div className="col s12 m6 l6">

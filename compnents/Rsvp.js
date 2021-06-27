@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
+const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id, cutOffDate, weddingDate, calDescription, weddinglocation, calTitle }) => {
   const router = useRouter();
   const rsvpRef = useRef();
   const [RSVPValue, setRSVPValue] = useState(
@@ -21,7 +21,14 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
   const [showModal, setshowModal] = useState(RSVPValue != "");
   const [rsvpPosted, setRsvpPosted] = useState(false);
   const [confettiRender, setconfettiRender] = useState(false);
+  const[disableForm, setDisableForm] = useState(false);
  
+  const styles = {
+    disableForm : {
+      pointerEvents: 'none',
+      opacity: '.4'
+    }
+  }
   const confettiSettings = {
     target: "confetti-holder",
     max: "500",
@@ -42,10 +49,10 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
     respawn: false,
   };
 
-  useEffect(() => {
+  useEffect(() => {    
+    cuttOffDateReached()
     let elems = document.querySelectorAll("select");
     M.FormSelect.init(elems, {});
-
     let txtArea = document.querySelector("#comments");
     M.textareaAutoResize(txtArea);
     M.updateTextFields();
@@ -63,9 +70,16 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
   }
 
   function handleChange(e) {
+    cuttOffDateReached();
     const val = e.target.value;
     setRSVPValue(val);
     setshowModal(val != "");
+  }
+
+  function cuttOffDateReached() {
+    const cuttOff = new Date(cutOffDate);
+    const now = new Date();
+    setDisableForm(cuttOff < now)
   }
 
   async function postUserData() {
@@ -136,26 +150,28 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
       <canvas id="confetti-holder"> </canvas>
       <div className="container center-align">
         <h3>{name}</h3>
-        <h5 style={{paddingBottom: "20px"}}>Gebruik asseblief hierdie vorm om te RSVP</h5>
-        <div className="row">
+        <h5 style={{paddingBottom: "20px"}}> {disableForm ? `Jammer, RSPV'S het reeds gesluit` : `Gebruik asseblief hierdie vorm om te RSVP`}</h5>
+        <div className="row" style = {disableForm ?  styles.disableForm : styles.none} >
           <form className="col s12 m8 offset-m2" onSubmit={handleSubmit}>
             <div className="input-field col s12">
               <select
                 onChange={handleChange}
                 defaultValue={RSVPValue}
-                ref={rsvpRef}
+                ref={rsvpRef}  
+                disabled = {disableForm}
               >
                 <option value="">Kies n Opsie</option>
                 <option value="false">
-                  Ongelukkig kan ek dit nie maak nie
+                  Ek kan ek dit nie maak nie
                 </option>
-                <option value="true">Ek is definitief daar!!</option>
+                <option value="true">Ek gaan Bywoon</option>
               </select>
               <label>Sien ons jou op ons groot dag?</label>
             </div>
             <div className="row">
               <div className="input-field col s12">
                 <textarea
+                  disabled = {disableForm}
                   value={Comment}
                   onChange={(event) => {
                     setComment(event.target.value);
@@ -163,12 +179,13 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
                   id="comments"
                   className="materialize-textarea"
                 ></textarea>
-                <label htmlFor="comments">Enige versoeke of kommentaar</label>
+                <label htmlFor="comments">Jy is Welkom on n boodskappie te los</label>
               </div>
             </div>
             <button
               data-target="modalConfirmRSVP"
               className={showModal && !confettiRender ? "btn modal-trigger" : "btn"}
+              disabled = {disableForm}
             >
               RSVP
             </button>
@@ -187,7 +204,11 @@ const rsvp = ({ attending, guest_comment, name, rsvp_date, url_param_id }) => {
             postUserData();
           }}
         />
-        {rsvpPosted && <ModalCal />}
+        {rsvpPosted && <ModalCal weddingDate = {weddingDate}  
+                                 calDescription ={calDescription} 
+                                 weddinglocation = {weddinglocation} 
+                                 calTitle  = {calTitle } 
+                        />}
       </div>
     </section>
   );

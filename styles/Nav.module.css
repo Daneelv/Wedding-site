@@ -24,7 +24,7 @@
 
 .logo {
     display: inline !important;
-    color: red;
+    color: var(--toast);
     }
     
 .inits {

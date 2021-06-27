@@ -6,12 +6,12 @@ if (typeof window !== "undefined") {
   require("materialize-css");
 }
 
-const ModalCal = ({ heading, btnCaption }) => {
+const ModalCal = ({ heading, btnCaption, weddingDate, calDescription, weddinglocation, calTitle }) => {
   const event = {
-    title: "Daneel en Maryke Troue",
-    location: "Slanghoek Mountain Resort, Rawsoneville",
-    description: "",
-    start: "2021-12-18 15:00:00",
+    title: calTitle,
+    location: weddinglocation, 
+    description: calDescription,
+    start: weddingDate,
     duration: [9, "hour"],
   };
 

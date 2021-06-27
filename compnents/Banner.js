@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,  } from "react";
 import banStyles from "../styles/Banner.module.css";
+
 
 if (typeof window !== "undefined") {
   const M = window;
@@ -18,7 +19,7 @@ const Banner = ({ image, weddingDate }) => {
       <section
         id="banner"
         className={banStyles.banner}
-        style={{ background: `url(${image}) center center / cover no-repeat` }}
+        style={{ background:`url( ${image}) center center / cover no-repeat`}}
       >
         {timerDays !== "" && (
           <div className="row" className = {banStyles.fadein}>
@@ -38,9 +39,8 @@ const Banner = ({ image, weddingDate }) => {
           </div>
         )}
       </section>
-    
   );
-
+  
   function Countdown() {
     const countDownDate = new Date(weddingDate).getTime();
 

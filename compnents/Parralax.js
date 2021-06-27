@@ -13,7 +13,7 @@ const Parralax = (parraProps) => {
     M.Parallax.init(elems, {});
   }, []);
   return (
-    <div className="parallax-container hide-on-small-only"  style={{height: "65vh"}} >
+    <div className="parallax-container hide-on-small-only"  style={{height: "65vh", zIndex: 1}} >
       <div className="parallax">
         <img src={image} className="responsive-img" ></img>
       </div>

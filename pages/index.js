@@ -29,7 +29,7 @@ export default function Home({ siteData }) {
           sectModal 
         } =siteData.content_attr;
 
-  const{weddingDate,RSVPCutOff1,RSVPCutOff2 } = Global;
+  const{weddingDate,RSVPCutOff1,RSVPCutOff2, title, calendarDescription, calLocation } = Global;
   
   const StringWeddingDate =  getStringDate(weddingDate);
   const StringWeddingTime =  getStringTime(weddingDate);
@@ -114,6 +114,11 @@ export default function Home({ siteData }) {
               name={userData.name}
               rsvp_date={userData.rsvp_date}
               url_param_id={userData.url_param_id}
+              cutOffDate = {userData.cutoff2 ? RSVPCutOff2 : RSVPCutOff1}
+              weddingDate = {weddingDate}
+              calDescription ={calendarDescription} 
+              weddinglocation ={calLocation} 
+              calTitle ={title}
             />
           </Layout>
         </div>
