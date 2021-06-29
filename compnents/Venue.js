@@ -9,13 +9,9 @@ const venue = ({ image, StringWeddingDate, StringWeddingTime , sectWeddingInfo, 
   const {directionsURL, directionsString, Accomodation, FamilyBraai } = sectWeddingInfo;
   
   const style = {
-    iframe: {
-      height: "60vh",
-      width: "100vw",
-    },
     backImage: {
       background: `url("${image}") left top / cover no-repeat`,
-      height: "80vh",
+      height: "100vh",
       marginBottom: "-20px",
       filter: "contrast(1.2)",
       backgroundAttachment: "fixed",

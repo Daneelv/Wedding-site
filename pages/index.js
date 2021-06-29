@@ -73,7 +73,7 @@ export default function Home({ siteData }) {
             transition: "opacity 2s",
           }}
         >
-          <Layout>
+          <Layout personName = {userData.name}>
            <ModalOK
               cuttOff = {userData.cutoff2 ? StringRSVPCutOff2 : StringRSVPCutOff1}
               info={sectModal.paragraph}

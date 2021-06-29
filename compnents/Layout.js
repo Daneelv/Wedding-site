@@ -2,7 +2,7 @@ import Nav from "./Nav";
 import Footer from "./Footer"
 import Head from "next/head";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, personName}) => {
   return (
     <>
       <Head>
@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       </Head>
-      <Nav />
+      <Nav personName = {personName} />
       {children}
       <Footer/>
     </>

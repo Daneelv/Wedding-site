@@ -9,7 +9,7 @@ if (typeof window !== "undefined") {
 
 
 
-const Nav = () => {
+const Nav = ({personName}) => {
   useEffect(() => {
     const elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems, { edge: "left" });
@@ -46,7 +46,7 @@ const Nav = () => {
                 <a href="#gallery">Fotos</a>
               </li>
               <li>
-                <a href="#invitedPers">Jou hoekie</a>
+                <a href="#invitedPers">{personName}</a>
               </li>
               <li>
                 <a href="#venue">Details</a>
@@ -69,7 +69,7 @@ const Nav = () => {
           <a href="#gallery">Fotos</a>
         </li>
         <li>
-          <a href="#invitedPers">Jou hoekie</a>
+          <a href="#invitedPers">{personName}</a>
         </li>
         <li>
           <a href="#venue">Details</a>
@@ -85,3 +85,7 @@ const Nav = () => {
 };
 
 export default Nav;
+
+Nav.defaultProps = {
+  personName: "Jou Hoekie"
+};
