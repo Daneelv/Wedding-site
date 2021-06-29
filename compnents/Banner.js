@@ -57,7 +57,7 @@ const Banner = ({ image, weddingDate }) => {
       let seconds = Math.floor((distance % (1000 * 60)) / 1000);
       distance < 0
         ? setTimerDays("Die knoop is deurgehak !!")
-        : setTimerDays(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+        : setTimerDays(`${days}d ${hours} h ${minutes}m ${seconds}s`);
     }, 1000);
   }
 };

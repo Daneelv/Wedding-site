@@ -11,7 +11,7 @@ const venue = ({ image, StringWeddingDate, StringWeddingTime , sectWeddingInfo, 
   const style = {
     backImage: {
       background: `url("${image}") left top / cover no-repeat`,
-      height: "100vh",
+      height : IsFamilyMember ? "100vh" :  "80vh",
       marginBottom: "-20px",
       filter: "contrast(1.2)",
       backgroundAttachment: "fixed",
@@ -37,8 +37,8 @@ const venue = ({ image, StringWeddingDate, StringWeddingTime , sectWeddingInfo, 
           </p>
            <h5>Kontak Nommer:</h5>
            <ul className = {Venue.contact}>
-              <li> <i className={"material-icons center"} >phone</i> <a href={`tel:${Accomodation.telNo}`}>{Accomodation.telNo}</a> </li>
-              <li> <i className={"material-icons center"} >phone_iphone</i> <a href={`tel:${Accomodation.celNo}`}>{Accomodation.celNo}</a></li>
+              {Accomodation.telNo  && <li> <i className={"material-icons center"} >phone</i> <a href={`tel:${Accomodation.telNo}`}>{Accomodation.telNo}</a> </li>}
+              {Accomodation.celNo  && <li> <i className={"material-icons center"} >phone_iphone</i> <a href={`tel:${Accomodation.celNo}`}>{Accomodation.celNo}</a></li> }
             </ul>
           <hr className="style"/>
 
