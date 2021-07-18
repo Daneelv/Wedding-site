@@ -9,7 +9,7 @@ import {getStringDay,getStringDate, getStringTime, getStringDateTime} from "../h
 import Layout from "../compnents/Layout";
 import Banner from "../compnents/Banner";
 import AboutUs from "../compnents/AboutUs";
-import InvitedPerson from "../compnents/InvitedPerson";
+// import InvitedPerson from "../compnents/InvitedPerson";
 import Gallery from "../compnents/gallery";
 import Venue from "../compnents/Venue";
 import Parralax from "../compnents/Parralax";
@@ -91,11 +91,11 @@ export default function Home({ siteData }) {
             
             <Gallery galleryData={sectGallery} />
             
-            <InvitedPerson
+            {/* <InvitedPerson
               message={userData.attr.welcome_msg}
               image={userData.attr.guest_img}
               name={userData.name}
-            />
+            /> */}
 
             <Venue
               StringWeddingDate = {StringWeddingDate} 

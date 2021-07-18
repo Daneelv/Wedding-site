@@ -45,9 +45,9 @@ const Nav = ({personName}) => {
               <li>
                 <a href="#gallery">Fotos</a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#invitedPers">{personName}</a>
-              </li>
+              </li> */}
               <li>
                 <a href="#venue">Details</a>
               </li>
@@ -68,9 +68,9 @@ const Nav = ({personName}) => {
         <li>
           <a href="#gallery">Fotos</a>
         </li>
-        <li>
+        {/* <li>
           <a href="#invitedPers">{personName}</a>
-        </li>
+        </li> */}
         <li>
           <a href="#venue">Details</a>
         </li>
