@@ -1,12 +1,13 @@
 ## Intro
 
-So this was my very first NEXT.JS project, a wedding invitatio website (which we did not end up using due to covid), but it was good practice
-The site is very dynamic,most config is done in the database. Each user (invite) receives a unique ID, this ID gets passed through a query string, which makes each URL unique for each invite.
+So this was my very first NEXT.JS project, a wedding invitation website (which we did not end up using due to covid), but it was good practice
+The site is very dynamic, most config is done in the database. Each user (invite) receives a unique ID, this ID gets passed through a query string, which makes each URL unique for each invite.
 If the URL ID does not match to one in the database, then the user will be redirected to a 404 page.
 
 Each invite can be customised with a personal message ect. 
 Theres also a family member section that shows info for only family members about the wedding. 
 The RSVP page is also dynamic, with built in cut off times ect.
+
 
 
 Database used: postgres (hosted on a free elephantSQL package)
