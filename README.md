@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Intro
+
+So this was my very first NEXT.JS project, I built a wedding invitation site, which we did not end up using due to covid. But it was good practice
+The site is very dynamic, each user (invite) receives a unique ID that gets passed via a query parameter in the URL, which makes each URL unique for each invite.
+If the URL does not match to one in the database, then the user will be redirected to a 404 page.
+
+I built the site so that we can write a personlised message for each invite. Theres also a family member section that shows info for only family members about the wedding. THe RSVP page is also dynamic, with built in cut off times ect.
+
+
+Database used: postgres (hosted on a free elephantSQL package)
+Next.JS hosted at Vercel
+Images hosted on cloudinary
+
 
 ## Getting Started
 
